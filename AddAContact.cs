@@ -42,7 +42,7 @@ namespace SeleniumTests
         }
         
         [Test]
-        public void TheUntitledTestCaseTest()
+        public void CreateNewContact()
         {
             OpenHomePAge();
             ContactsData contact = new ContactsData("Ivanov");
