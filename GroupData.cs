@@ -17,13 +17,6 @@ namespace Address_Book_Test_N
             this.name = name;
         }
 
-        public GroupData(string name, string header, string footer)
-        {
-            this.name = name;
-            this.header = header;
-            this.footer = footer;
-        }
-
         public string Name
         {
             get { return name;}
