@@ -19,13 +19,13 @@ namespace Address_Book_Test_N
         
 
         public string Username {
-            get{ return Username;}
+            get{ return username;}
             set { username = value;}
                                 }
 
         public string Password {
             get { return password;}
-            set { username = value;}
+            set { password = value;}
                                 }
     }
 }
