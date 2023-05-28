@@ -54,7 +54,6 @@ namespace aaddressbook_web_tests
             driver.FindElement(By.Name("group_name")).SendKeys("lection test");
             driver.FindElement(By.Name("submit")).Click();
             driver.FindElement(By.LinkText("group page")).Click();
-            driver.Navigate().GoToUrl("http://localhost/addressbook/group.php?selected%5B%5D=1&delete=Delete+group%28s%29");
             driver.FindElement(By.LinkText("Logout")).Click();
 
         }
