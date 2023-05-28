@@ -2,13 +2,14 @@ using System;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
+using Address_Book_Test_N;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
 
-namespace aaddressbook_web_tests
+namespace Address_Book_Test_N
 {
     [TestFixture]
     public class AddNewGroup
@@ -42,21 +43,65 @@ namespace aaddressbook_web_tests
         }
 
         [Test]
-        public void TheUntitledTestCaseTest()
+        public void CreateNewGroupTest()
         {
-            driver.Navigate().GoToUrl(baseURL);
-            driver.FindElement(By.Name("user")).SendKeys("admin");
-            driver.FindElement(By.Name("pass")).SendKeys("secret");
-            driver.FindElement(By.XPath("//input[@value='Login']")).Click();
-            driver.FindElement(By.LinkText("groups")).Click();
-            driver.FindElement(By.Name("new")).Click();
-            driver.FindElement(By.Name("group_name")).Click();
-            driver.FindElement(By.Name("group_name")).SendKeys("lection test");
-            driver.FindElement(By.Name("submit")).Click();
-            driver.FindElement(By.LinkText("group page")).Click();
-            driver.FindElement(By.LinkText("Logout")).Click();
+            OpenHomepage();
+            Login(new AccountData("admin","secret"));
+            GoToGroupPage();
+            InitGroupCreation();
+            GroupData group = new GroupData("lECTION GROUP");
+            group.Header = "Header";
+            group.Footer = "Footer";
+            FillGroupForm(group);
+            SubmitGroupCreation();
+            ReturnToGroupsPage();
+            Logout();
 
         }
+
+        private void Logout()
+        {
+            driver.FindElement(By.LinkText("Logout")).Click();
+        }
+        void GoToGroupPage()
+        {
+            driver.FindElement(By.LinkText("groups")).Click();
+        }
+        private void FillGroupForm(GroupData group)
+        {
+            driver.FindElement(By.Name("group_name")).SendKeys(group.Name);
+            driver.FindElement(By.Name("group_header")).SendKeys(group.Header);
+            driver.FindElement(By.Name("group_footer")).SendKeys(group.Footer);
+
+        }
+
+        private void ReturnToGroupsPage()
+        {
+            driver.FindElement(By.LinkText("group page")).Click();
+        }
+
+        private void SubmitGroupCreation()
+        {
+            driver.FindElement(By.Name("submit")).Click();
+        }
+
+        private void InitGroupCreation()
+        {
+            driver.FindElement(By.Name("new")).Click();
+        }
+
+        private void Login(AccountData account)
+        {
+            driver.FindElement(By.Name("user")).SendKeys(account.Username);
+            driver.FindElement(By.Name("pass")).SendKeys(account.Password);
+            driver.FindElement(By.XPath("//input[@value='Login']")).Click();
+        }
+
+        private void OpenHomepage()
+        {
+            driver.Navigate().GoToUrl(baseURL);
+        }
+
         private bool IsElementPresent(By by)
         {
             try
