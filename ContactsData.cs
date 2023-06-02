@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Address_Book_Test_N
 {
-    internal class ContactsData
+    public class ContactsData
     {
 
         private string firestName;
