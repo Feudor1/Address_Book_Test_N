@@ -14,7 +14,7 @@ namespace Address_Book_Test_N
         [Test]
         public void CreateNewContact()
         {
-            GoToHomePage();
+            navigationHelper.GoToHomePage();
             ContactsData contact = new ContactsData("Ivanov");
             contact.MiddleName = "Ivan";
             contact.LastName = "Ivanovich";
@@ -39,11 +39,11 @@ namespace Address_Book_Test_N
             contact.Address2 = "dsfasdfsadfsdf";
             contact.Home = "asdfsfd";
             contact.Notes = "asdfasfdfdasfdsa";
-            Login(new AccountData("admin", "secret"));
-            AddANewContact();
-            FillTheContactData(contact);
-            GoToHomePage();
-            LogOut();
+            loginHelper.Login(new AccountData("admin", "secret"));
+            contactHelper.AddANewContact();
+            contactHelper.FillTheContactData(contact);
+            navigationHelper.GoToHomePage();
+            loginHelper.LogOut();
         }
     }
 }

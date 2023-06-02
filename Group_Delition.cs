@@ -12,13 +12,13 @@ namespace Address_Book_Test_N
         [Test]
         public void TheGroupDelitionTest()
         {
-            GoToHomePage();
-            Login(new AccountData("admin", "secret"));
-            GoToGroupPage();
-            SelectGroup(1);
-            DeleteGroup();
-            GoToGroupPage();
-            LogOut();
+            navigationHelper.GoToHomePage();
+            loginHelper.Login(new AccountData("admin", "secret"));
+            navigationHelper.GoToGroupPage();
+            groupHelper.SelectGroup(1);
+            groupHelper.DeleteGroup();
+            navigationHelper.GoToGroupPage();
+            loginHelper.LogOut();
         }
     }
 }
