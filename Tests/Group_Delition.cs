@@ -6,12 +6,7 @@
         [Test]
         public void TheGroupDelitionTest()
         {
-            applicationManager.Navi.GoToGroupPage();
-            applicationManager.GruopHP
-                .SelectGroup(1)
-                .DeleteGroup();
-            applicationManager.Navi.GoToGroupPage();
-            applicationManager.Auth.LogOut();
+            applicationManager.GruopHP.Remove(1);
         }
     }
 }
