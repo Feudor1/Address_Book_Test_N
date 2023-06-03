@@ -1,5 +1,7 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Internal;
 using OpenQA.Selenium.Support.UI;
+using System;
 
 namespace Address_Book_Test_N
 {
@@ -11,6 +13,22 @@ namespace Address_Book_Test_N
         {
             driver.FindElement(By.LinkText("add new")).Click();
             FillTheContactData(contact);
+            manager.Navi.GoToHomePage();
+            manager.Auth.LogOut();
+            return this;
+        }
+
+        public ContactHelper RemoveContract()
+        {
+            return this;
+        }
+
+        public ContactHelper EditAccount(ContactsData newDAta, int i)
+        {
+            SelectContact(i);
+            FindEditButton(i);
+            FillTheContactData(newDAta);
+            FindUpdateGroupButton();
             manager.Navi.GoToHomePage();
             manager.Auth.LogOut();
             return this;
@@ -44,5 +62,23 @@ namespace Address_Book_Test_N
             driver.FindElement(By.XPath("//div[@id='content']/form/input[21]")).Click();
             return this;
         }
+
+        public ContactHelper SelectContact(int i)
+        {
+            driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + i + "]")).Click();
+            return this;
+        }
+
+        public ContactHelper FindEditButton(int i)
+        {
+            driver.FindElement(By.XPath("//a[@href='edit.php?id=" + i + "']")).Click();
+            return this;
+        }
+        public ContactHelper FindUpdateGroupButton()
+        {
+            driver.FindElement(By.Name("update")).Click();
+            return this;
+        }
+
     }
 }
