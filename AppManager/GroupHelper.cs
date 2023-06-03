@@ -13,6 +13,19 @@ namespace Address_Book_Test_N
             return this;
         }
 
+        public GroupHelper Modify(int v, GroupData newData)
+        {
+            manager.Navi.GoToGroupPage();
+            SelectGroup(1);
+            FindEditButton();
+            FillGroupForm(newData);
+            FindUpdateGroupButton();
+            manager.Navi.GoToGroupPage();
+            manager.Auth.LogOut();
+            return this;
+
+        }
+
         public GroupHelper CreateGroup(GroupData group)
         {
             manager.Navi.GoToGroupPage();
@@ -37,6 +50,18 @@ namespace Address_Book_Test_N
         public GroupHelper SubmitGroupCreation()
         {
             driver.FindElement(By.Name("submit")).Click();
+            return this;
+        }
+
+        public GroupHelper FindUpdateGroupButton()
+        {
+            driver.FindElement(By.Name("update")).Click();
+            return this;
+        }
+
+        public GroupHelper FindEditButton()
+        {
+            driver.FindElement(By.Name("edit")).Click();
             return this;
         }
         public GroupHelper DeleteGroup()
