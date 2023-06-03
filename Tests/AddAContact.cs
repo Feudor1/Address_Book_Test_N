@@ -1,9 +1,13 @@
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading;
-using Address_Book_Test_N;
+using System.Threading.Tasks;
 using NUnit.Framework;
+using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Support.UI;
 
 namespace Address_Book_Test_N
 {
@@ -14,7 +18,7 @@ namespace Address_Book_Test_N
         [Test]
         public void CreateNewContact()
         {
-            navigationHelper.GoToHomePage();
+            applicationManager.Navi.GoToHomePage();
             ContactsData contact = new ContactsData("Ivanov");
             contact.MiddleName = "Ivan";
             contact.LastName = "Ivanovich";
@@ -39,11 +43,11 @@ namespace Address_Book_Test_N
             contact.Address2 = "dsfasdfsadfsdf";
             contact.Home = "asdfsfd";
             contact.Notes = "asdfasfdfdasfdsa";
-            loginHelper.Login(new AccountData("admin", "secret"));
-            contactHelper.AddANewContact();
-            contactHelper.FillTheContactData(contact);
-            navigationHelper.GoToHomePage();
-            loginHelper.LogOut();
+            applicationManager.Auth.Login(new AccountData("admin", "secret"));
+            applicationManager.ContactHP.AddANewContact();
+            applicationManager.ContactHP.FillTheContactData(contact);
+            applicationManager.Navi.GoToHomePage();
+            applicationManager.Auth.LogOut();
         }
     }
 }
