@@ -7,17 +7,28 @@ namespace Address_Book_Test_N
         [Test]
         public void CreateNewGroupTest()
         {
-            applicationManager.Navi.GoToGroupPage();
             GroupData group = new GroupData("lECTION GROUP");
             group.Header = "Header";
             group.Footer = "Footer";
-            applicationManager.GruopHP
-                .InitGroupCreation()
-                .FillGroupForm(group)
-                .SubmitGroupCreation();
+            applicationManager.Navi.GoToGroupPage();
+            applicationManager.GruopHP.CreateGroup(group);
             applicationManager.Navi.GoToGroupPage();
             applicationManager.Auth.LogOut();
 
         }
+
+        [Test]
+        public void CreateEmptyGroup()
+        {
+            GroupData group = new GroupData("lECTION GROUP");
+            group.Header = "";
+            group.Footer = "";
+            applicationManager.Navi.GoToGroupPage();
+            applicationManager.GruopHP.CreateGroup(group);
+            applicationManager.Navi.GoToGroupPage();
+            applicationManager.Auth.LogOut();
+
+        }
+
     }
 }

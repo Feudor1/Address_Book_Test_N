@@ -7,9 +7,10 @@ namespace Address_Book_Test_N
     {
         public ContactHelper(IWebDriver driver) : base(driver)
         { }
-        public ContactHelper AddANewContact()
+        public ContactHelper AddANewContact(ContactsData contact)
         {
             driver.FindElement(By.LinkText("add new")).Click();
+            FillTheContactData(contact);
             return this;
         }
         public ContactHelper FillTheContactData(ContactsData contact)

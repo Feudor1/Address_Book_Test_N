@@ -31,9 +31,39 @@ namespace Address_Book_Test_N
             contact.Address2 = "dsfasdfsadfsdf";
             contact.Home = "asdfsfd";
             contact.Notes = "asdfasfdfdasfdsa";
-            applicationManager.ContactHP
-                .AddANewContact()
-                .FillTheContactData(contact);
+            applicationManager.ContactHP.AddANewContact(contact);
+            applicationManager.Navi.GoToHomePage();
+            applicationManager.Auth.LogOut();
+        }
+
+        [Test]
+        public void CreateEmptywContact()
+        {
+            ContactsData contact = new ContactsData("");
+            contact.MiddleName = "";
+            contact.LastName = "";
+            contact.NickName = "";
+            contact.Title = "";
+            contact.Company = "";
+            contact.Adress = "";
+            contact.HomeTelephone = "";
+            contact.MobileTelephone = "";
+            contact.WorkTelephone = "";
+            contact.Fax = "";
+            contact.Email = "";
+            contact.Email2 = "";
+            contact.Email3 = "";
+            contact.Homepage = "";
+            contact.Birthaday = "-";
+            contact.Birthmonth = "-";
+            contact.Birthyear = "";
+            contact.Annivday = "-";
+            contact.Annivmonth = "-";
+            contact.Annivyear = " ";
+            contact.Address2 = " ";
+            contact.Home = " ";
+            contact.Notes = " ";
+            applicationManager.ContactHP.AddANewContact(contact);
             applicationManager.Navi.GoToHomePage();
             applicationManager.Auth.LogOut();
         }

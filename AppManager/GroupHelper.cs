@@ -13,7 +13,14 @@ namespace Address_Book_Test_N
             return this;
         }
 
-       
+        public GroupHelper CreateGroup(GroupData group)
+        {
+            //applicationManager.Navi.GoToGroupPage();
+            InitGroupCreation();
+            FillGroupForm(group);
+            SubmitGroupCreation();
+            return this;
+        }
 
         public GroupHelper SubmitGroupCreation()
         {
