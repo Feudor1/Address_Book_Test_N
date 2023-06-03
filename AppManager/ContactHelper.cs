@@ -1,25 +1,19 @@
-﻿using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
-using OpenQA.Selenium.Firefox;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
 namespace Address_Book_Test_N
 {
     public class ContactHelper : HelperBase
     {
-        public ContactHelper(IWebDriver driver) : base(driver)
+        public ContactHelper(ApplicationManager manager) : base(manager)
         { }
-        public void AddANewContact()
+        public ContactHelper AddANewContact(ContactsData contact)
         {
             driver.FindElement(By.LinkText("add new")).Click();
+            FillTheContactData(contact);
+            return this;
         }
-        public void FillTheContactData(ContactsData contact)
+        public ContactHelper FillTheContactData(ContactsData contact)
         {
             driver.FindElement(By.Name("firstname")).SendKeys(contact.FirstName);
             driver.FindElement(By.Name("middlename")).SendKeys(contact.MiddleName);
@@ -46,6 +40,7 @@ namespace Address_Book_Test_N
             driver.FindElement(By.Name("phone2")).SendKeys(contact.Home);
             driver.FindElement(By.Name("notes")).SendKeys(contact.Notes);
             driver.FindElement(By.XPath("//div[@id='content']/form/input[21]")).Click();
+            return this;
         }
     }
 }

@@ -1,14 +1,3 @@
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
-using OpenQA.Selenium.Firefox;
-using OpenQA.Selenium.Support.UI;
-
 namespace Address_Book_Test_N
 {
     [TestFixture]
@@ -18,7 +7,6 @@ namespace Address_Book_Test_N
         [Test]
         public void CreateNewContact()
         {
-            applicationManager.Navi.GoToHomePage();
             ContactsData contact = new ContactsData("Ivanov");
             contact.MiddleName = "Ivan";
             contact.LastName = "Ivanovich";
@@ -43,9 +31,39 @@ namespace Address_Book_Test_N
             contact.Address2 = "dsfasdfsadfsdf";
             contact.Home = "asdfsfd";
             contact.Notes = "asdfasfdfdasfdsa";
-            applicationManager.Auth.Login(new AccountData("admin", "secret"));
-            applicationManager.ContactHP.AddANewContact();
-            applicationManager.ContactHP.FillTheContactData(contact);
+            applicationManager.ContactHP.AddANewContact(contact);
+            applicationManager.Navi.GoToHomePage();
+            applicationManager.Auth.LogOut();
+        }
+
+        [Test]
+        public void CreateEmptywContact()
+        {
+            ContactsData contact = new ContactsData("");
+            contact.MiddleName = "";
+            contact.LastName = "";
+            contact.NickName = "";
+            contact.Title = "";
+            contact.Company = "";
+            contact.Adress = "";
+            contact.HomeTelephone = "";
+            contact.MobileTelephone = "";
+            contact.WorkTelephone = "";
+            contact.Fax = "";
+            contact.Email = "";
+            contact.Email2 = "";
+            contact.Email3 = "";
+            contact.Homepage = "";
+            contact.Birthaday = "-";
+            contact.Birthmonth = "-";
+            contact.Birthyear = "";
+            contact.Annivday = "-";
+            contact.Annivmonth = "-";
+            contact.Annivyear = " ";
+            contact.Address2 = " ";
+            contact.Home = " ";
+            contact.Notes = " ";
+            applicationManager.ContactHP.AddANewContact(contact);
             applicationManager.Navi.GoToHomePage();
             applicationManager.Auth.LogOut();
         }
