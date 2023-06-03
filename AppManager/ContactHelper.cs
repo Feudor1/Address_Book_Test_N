@@ -5,7 +5,7 @@ namespace Address_Book_Test_N
 {
     public class ContactHelper : HelperBase
     {
-        public ContactHelper(IWebDriver driver) : base(driver)
+        public ContactHelper(ApplicationManager manager) : base(manager)
         { }
         public ContactHelper AddANewContact(ContactsData contact)
         {

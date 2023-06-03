@@ -6,7 +6,7 @@ namespace Address_Book_Test_N
     {
 
 
-        public LoginHelper(IWebDriver driver) : base(driver)
+        public LoginHelper(ApplicationManager manager) : base(manager)
         { }
         public void Login(AccountData account)
         {

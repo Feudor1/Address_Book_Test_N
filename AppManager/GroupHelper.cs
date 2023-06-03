@@ -4,7 +4,7 @@ namespace Address_Book_Test_N
 {
     public class GroupHelper : HelperBase
     {
-        public GroupHelper(IWebDriver driver) : base(driver)
+        public GroupHelper(ApplicationManager manager) : base(manager)
         {
         }
         public GroupHelper InitGroupCreation()
@@ -15,7 +15,7 @@ namespace Address_Book_Test_N
 
         public GroupHelper CreateGroup(GroupData group)
         {
-            //applicationManager.Navi.GoToGroupPage();
+            manager.Navi.GoToGroupPage();
             InitGroupCreation();
             FillGroupForm(group);
             SubmitGroupCreation();

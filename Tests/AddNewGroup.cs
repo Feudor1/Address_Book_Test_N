@@ -20,7 +20,7 @@ namespace Address_Book_Test_N
         [Test]
         public void CreateEmptyGroup()
         {
-            GroupData group = new GroupData("lECTION GROUP");
+            GroupData group = new GroupData("");
             group.Header = "";
             group.Footer = "";
             applicationManager.Navi.GoToGroupPage();
