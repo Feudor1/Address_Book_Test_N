@@ -18,8 +18,12 @@ namespace Address_Book_Test_N
             return this;
         }
 
-        public ContactHelper RemoveContract()
+        public ContactHelper RemoveContract(int i)
         {
+            SelectContact(i);
+            FindDeleteButton();
+            manager.Navi.GoToHomePage();
+            manager.Auth.LogOut();
             return this;
         }
 
@@ -77,6 +81,13 @@ namespace Address_Book_Test_N
         public ContactHelper FindUpdateGroupButton()
         {
             driver.FindElement(By.Name("update")).Click();
+            return this;
+        }
+
+        public ContactHelper FindDeleteButton()
+        {
+            driver.FindElement(By.XPath("//input[@value='Delete']")).Click();
+            driver.SwitchTo().Alert().Accept();
             return this;
         }
 

@@ -7,7 +7,7 @@
             [Test]
             public void ContractRemover()
             {
-                applicationManager.ContactHP.RemoveContract();
+                applicationManager.ContactHP.RemoveContract(24);
             }
         
     }
