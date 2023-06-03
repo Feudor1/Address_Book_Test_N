@@ -10,10 +10,7 @@ namespace Address_Book_Test_N
             GroupData group = new GroupData("lECTION GROUP");
             group.Header = "Header";
             group.Footer = "Footer";
-            applicationManager.Navi.GoToGroupPage();
             applicationManager.GruopHP.CreateGroup(group);
-            applicationManager.Navi.GoToGroupPage();
-            applicationManager.Auth.LogOut();
 
         }
 
@@ -23,11 +20,7 @@ namespace Address_Book_Test_N
             GroupData group = new GroupData("");
             group.Header = "";
             group.Footer = "";
-            applicationManager.Navi.GoToGroupPage();
             applicationManager.GruopHP.CreateGroup(group);
-            applicationManager.Navi.GoToGroupPage();
-            applicationManager.Auth.LogOut();
-
         }
 
     }

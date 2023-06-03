@@ -19,6 +19,18 @@ namespace Address_Book_Test_N
             InitGroupCreation();
             FillGroupForm(group);
             SubmitGroupCreation();
+            manager.Navi.GoToGroupPage();
+            manager.Auth.LogOut();
+            return this;
+        }
+
+        public GroupHelper Remove(int v)
+        {
+            manager.Navi.GoToGroupPage();
+            SelectGroup(1);
+            DeleteGroup();
+            manager.Navi.GoToGroupPage();
+            manager.Auth.LogOut();
             return this;
         }
 
