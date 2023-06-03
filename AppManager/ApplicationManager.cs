@@ -27,10 +27,6 @@ namespace Address_Book_Test_N
             navigationHelper = new NavigationHelper(driver, baseURL);
             groupHelper = new GroupHelper(driver);
             contactHelper = new ContactHelper(driver);
-        }
-
-        public void SetupTest()
-        {
             driver = new ChromeDriver();
             baseURL = "http://localhost/addressbook/";
             loginHelper = new LoginHelper(driver);

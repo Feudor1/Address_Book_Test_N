@@ -18,8 +18,8 @@ namespace Address_Book_Test_N
         [Test]
         public void CreateNewGroupTest()
         {
-            applicationManager.Auth.Login(new AccountData("admin", "secret"));
             applicationManager.Navi.GoToHomePage();
+            applicationManager.Auth.Login(new AccountData("admin", "secret"));
             applicationManager.Navi.GoToGroupPage();
             applicationManager.GruopHP.InitGroupCreation();
             GroupData group = new GroupData("lECTION GROUP");
