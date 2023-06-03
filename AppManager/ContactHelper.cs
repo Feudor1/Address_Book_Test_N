@@ -7,11 +7,12 @@ namespace Address_Book_Test_N
     {
         public ContactHelper(IWebDriver driver) : base(driver)
         { }
-        public void AddANewContact()
+        public ContactHelper AddANewContact()
         {
             driver.FindElement(By.LinkText("add new")).Click();
+            return this;
         }
-        public void FillTheContactData(ContactsData contact)
+        public ContactHelper FillTheContactData(ContactsData contact)
         {
             driver.FindElement(By.Name("firstname")).SendKeys(contact.FirstName);
             driver.FindElement(By.Name("middlename")).SendKeys(contact.MiddleName);
@@ -38,6 +39,7 @@ namespace Address_Book_Test_N
             driver.FindElement(By.Name("phone2")).SendKeys(contact.Home);
             driver.FindElement(By.Name("notes")).SendKeys(contact.Notes);
             driver.FindElement(By.XPath("//div[@id='content']/form/input[21]")).Click();
+            return this;
         }
     }
 }

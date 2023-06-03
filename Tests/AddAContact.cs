@@ -7,7 +7,6 @@ namespace Address_Book_Test_N
         [Test]
         public void CreateNewContact()
         {
-            applicationManager.Navi.GoToHomePage();
             ContactsData contact = new ContactsData("Ivanov");
             contact.MiddleName = "Ivan";
             contact.LastName = "Ivanovich";
@@ -32,9 +31,9 @@ namespace Address_Book_Test_N
             contact.Address2 = "dsfasdfsadfsdf";
             contact.Home = "asdfsfd";
             contact.Notes = "asdfasfdfdasfdsa";
-            applicationManager.Auth.Login(new AccountData("admin", "secret"));
-            applicationManager.ContactHP.AddANewContact();
-            applicationManager.ContactHP.FillTheContactData(contact);
+            applicationManager.ContactHP
+                .AddANewContact()
+                .FillTheContactData(contact);
             applicationManager.Navi.GoToHomePage();
             applicationManager.Auth.LogOut();
         }

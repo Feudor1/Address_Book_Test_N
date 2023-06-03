@@ -9,6 +9,8 @@
         public void SetupTest()
         {
             applicationManager = new ApplicationManager();
+            applicationManager.Navi.GoToHomePage();
+            applicationManager.Auth.Login(new AccountData("admin", "secret"));
         }
 
         [TearDown]
