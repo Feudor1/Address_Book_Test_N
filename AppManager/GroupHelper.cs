@@ -16,7 +16,7 @@ namespace Address_Book_Test_N
         public GroupHelper Modify(int v, GroupData newData)
         {
             manager.Navi.GoToGroupPage();
-            SelectGroup(1);
+            SelectGroup(v);
             FindEditButton();
             FillGroupForm(newData);
             FindUpdateGroupButton();
@@ -40,7 +40,7 @@ namespace Address_Book_Test_N
         public GroupHelper Remove(int v)
         {
             manager.Navi.GoToGroupPage();
-            SelectGroup(1);
+            SelectGroup(v);
             DeleteGroup();
             manager.Navi.GoToGroupPage();
             manager.Auth.LogOut();
