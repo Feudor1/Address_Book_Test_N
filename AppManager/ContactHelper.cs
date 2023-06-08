@@ -27,10 +27,9 @@ namespace Address_Book_Test_N
             return this;
         }
 
-        public ContactHelper EditAccount(ContactsData newDAta, int i)
+        public ContactHelper EditAccount(ContactsData newDAta)
         {
-            SelectContact(i);
-            FindEditButton(i);
+            FindEditButton();
             FillTheContactData(newDAta);
             FindUpdateGroupButton();
             manager.Navi.GoToHomePage();
@@ -73,9 +72,9 @@ namespace Address_Book_Test_N
             return this;
         }
 
-        public ContactHelper FindEditButton(int i)
+        public ContactHelper FindEditButton()
         {
-            driver.FindElement(By.XPath("//a[@href='edit.php?id=" + i + "']")).Click();
+            driver.FindElement(By.XPath("//img[@alt='Edit']")).Click();
             return this;
         }
         public ContactHelper FindUpdateGroupButton()
