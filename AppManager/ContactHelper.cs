@@ -12,6 +12,7 @@ namespace Address_Book_Test_N
         { }
         public ContactHelper AddANewContact(ContactsData contact)
         {
+            manager.Navi.GoToHomePage();
             driver.FindElement(By.LinkText("add new")).Click();
             FillTheContactData(contact);
             manager.Navi.GoToHomePage();
@@ -21,6 +22,7 @@ namespace Address_Book_Test_N
 
         public ContactHelper RemoveContract(int i)
         {
+            manager.Navi.GoToHomePage();
             SelectContact(i);
             FindDeleteButton();
             manager.Navi.GoToHomePage();
@@ -30,6 +32,7 @@ namespace Address_Book_Test_N
 
         public ContactHelper EditAccount(ContactsData newDAta)
         {
+            manager.Navi.GoToHomePage();
             FindEditButton();
             FillTheContactData(newDAta);
             FindUpdateGroupButton();

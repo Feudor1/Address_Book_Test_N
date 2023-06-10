@@ -1,6 +1,6 @@
 ﻿namespace Address_Book_Test_N
 {
-   // [SetUpFixture]
+    [SetUpFixture]
     public class TestSuteFixture
     {
         public static ApplicationManager applicationManager;
