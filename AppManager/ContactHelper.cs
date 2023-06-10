@@ -12,29 +12,29 @@ namespace Address_Book_Test_N
         { }
         public ContactHelper AddANewContact(ContactsData contact)
         {
+            manager.Navi.GoToHomePage();
             driver.FindElement(By.LinkText("add new")).Click();
             FillTheContactData(contact);
             manager.Navi.GoToHomePage();
-            manager.Auth.LogOut();
             return this;
         }
 
         public ContactHelper RemoveContract(int i)
         {
+            manager.Navi.GoToHomePage();
             SelectContact(i);
             FindDeleteButton();
             manager.Navi.GoToHomePage();
-            manager.Auth.LogOut();
             return this;
         }
 
         public ContactHelper EditAccount(ContactsData newDAta)
         {
+            manager.Navi.GoToHomePage();
             FindEditButton();
             FillTheContactData(newDAta);
             FindUpdateGroupButton();
             manager.Navi.GoToHomePage();
-            manager.Auth.LogOut();
             return this;
         }
         public ContactHelper FillTheContactData(ContactsData contact)
