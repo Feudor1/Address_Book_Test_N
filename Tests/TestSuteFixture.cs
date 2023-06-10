@@ -1,12 +1,12 @@
 ﻿namespace Address_Book_Test_N
 {
-    public class TestBase
+    [SetUpFixture]
+    public class TestSuteFixture
     {
-
-        protected ApplicationManager app;
+        public static ApplicationManager app;
 
         [SetUp]
-        public void SetupTest()
+        public void InintApplicationManager()
         {
             app = new ApplicationManager();
             app.Navi.GoToHomePage();
@@ -14,7 +14,7 @@
         }
 
         [TearDown]
-        public void TeardownTest()
+        public void StopApplicationManager()
         {
             app.Stop();
         }

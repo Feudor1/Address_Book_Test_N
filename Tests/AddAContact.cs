@@ -31,7 +31,7 @@ namespace Address_Book_Test_N
             contact.Address2 = "dsfasdfsadfsdf";
             contact.Home = "asdfsfd";
             contact.Notes = "asdfasfdfdasfdsa";
-            applicationManager.ContactHP.AddANewContact(contact);
+            app.ContactHP.AddANewContact(contact);
         }
 
         [Test]
@@ -61,7 +61,7 @@ namespace Address_Book_Test_N
             contact.Address2 = " ";
             contact.Home = " ";
             contact.Notes = " ";
-            applicationManager.ContactHP.AddANewContact(contact);
+            app.ContactHP.AddANewContact(contact);
         }
     }
 }

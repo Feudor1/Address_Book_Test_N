@@ -30,7 +30,7 @@
             NewDAta.Address2 = "dsfasdfsadfsdf";
             NewDAta.Home = "asdfsfd";
             NewDAta.Notes = "asdfasfdfdasfdsa";
-            applicationManager.ContactHP.EditAccount(NewDAta);
+            app.ContactHP.EditAccount(NewDAta);
         }
     }
 }
