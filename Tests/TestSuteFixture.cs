@@ -1,22 +1,21 @@
 ﻿namespace Address_Book_Test_N
 {
-    [SetUpFixture]
     public class TestSuteFixture
     {
-        public static ApplicationManager app;
+        public static ApplicationManager applicationManager;
 
         [SetUp]
         public void InintApplicationManager()
         {
-            app = new ApplicationManager();
-            app.Navi.GoToHomePage();
-            app.Auth.Login(new AccountData("admin", "secret"));
+            applicationManager = new ApplicationManager();
+            applicationManager.Navi.GoToHomePage();
+            applicationManager.Auth.Login(new AccountData("admin", "secret"));
         }
 
         [TearDown]
         public void StopApplicationManager()
         {
-            app.Stop();
+            applicationManager.Stop();
         }
     }
 }

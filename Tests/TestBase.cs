@@ -3,20 +3,15 @@
     public class TestBase
     {
 
-        protected ApplicationManager app;
+        protected ApplicationManager applicationManager;
 
         [SetUp]
         public void SetupTest()
         {
-            app = new ApplicationManager();
-            app.Navi.GoToHomePage();
-            app.Auth.Login(new AccountData("admin", "secret"));
+            applicationManager = new ApplicationManager();
+            applicationManager.Navi.GoToHomePage();
+            applicationManager.Auth.Login(new AccountData("admin", "secret"));
         }
 
-        [TearDown]
-        public void TeardownTest()
-        {
-            app.Stop();
-        }
     }
 }

@@ -9,7 +9,7 @@
             GroupData newData = new GroupData("2.5 Lesson Group");
             newData.Header = "Header Header";
             newData.Footer = "Footer Footer";
-            app.GruopHP.Modify(1, newData);
+            applicationManager.GruopHP.Modify(1, newData);
             }
         
     }

@@ -6,7 +6,7 @@
         [Test]
         public void TheGroupDelitionTest()
         {
-            app.GruopHP.Remove(1);
+            applicationManager.GruopHP.Remove(1);
         }
     }
 }

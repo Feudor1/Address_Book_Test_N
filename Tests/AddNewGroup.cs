@@ -10,7 +10,7 @@ namespace Address_Book_Test_N
             GroupData group = new GroupData("lECTION GROUP");
             group.Header = "Header";
             group.Footer = "Footer";
-            app.GruopHP.CreateGroup(group);
+            applicationManager.GruopHP.CreateGroup(group);
 
         }
 
@@ -20,7 +20,7 @@ namespace Address_Book_Test_N
             GroupData group = new GroupData("");
             group.Header = "";
             group.Footer = "";
-            app.GruopHP.CreateGroup(group);
+            applicationManager.GruopHP.CreateGroup(group);
         }
 
     }
