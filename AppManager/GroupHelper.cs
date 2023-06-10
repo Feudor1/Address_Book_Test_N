@@ -21,7 +21,6 @@ namespace Address_Book_Test_N
             FillGroupForm(newData);
             FindUpdateGroupButton();
             manager.Navi.GoToGroupPage();
-            manager.Auth.LogOut();
             return this;
 
         }
@@ -33,7 +32,6 @@ namespace Address_Book_Test_N
             FillGroupForm(group);
             SubmitGroupCreation();
             manager.Navi.GoToGroupPage();
-            manager.Auth.LogOut();
             return this;
         }
 
@@ -43,7 +41,6 @@ namespace Address_Book_Test_N
             SelectGroup(v);
             DeleteGroup();
             manager.Navi.GoToGroupPage();
-            manager.Auth.LogOut();
             return this;
         }
 

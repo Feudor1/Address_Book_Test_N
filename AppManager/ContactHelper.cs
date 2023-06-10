@@ -16,7 +16,6 @@ namespace Address_Book_Test_N
             driver.FindElement(By.LinkText("add new")).Click();
             FillTheContactData(contact);
             manager.Navi.GoToHomePage();
-            manager.Auth.LogOut();
             return this;
         }
 
@@ -26,7 +25,6 @@ namespace Address_Book_Test_N
             SelectContact(i);
             FindDeleteButton();
             manager.Navi.GoToHomePage();
-            manager.Auth.LogOut();
             return this;
         }
 
@@ -37,7 +35,6 @@ namespace Address_Book_Test_N
             FillTheContactData(newDAta);
             FindUpdateGroupButton();
             manager.Navi.GoToHomePage();
-            manager.Auth.LogOut();
             return this;
         }
         public ContactHelper FillTheContactData(ContactsData contact)
