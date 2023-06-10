@@ -11,5 +11,14 @@ namespace Address_Book_Test_N
             this.manager = manager;
             this.driver = manager.Driver;
         }
+
+        protected void Type(By locator, string text)
+        {
+            //Не самый важный кейс, не трогаем поля группы, если они null
+            if (text != null)
+            {
+                driver.FindElement(locator).SendKeys(text);
+            }
+        }
     }
 }
