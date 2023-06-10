@@ -8,9 +8,7 @@
         [SetUp]
         public void SetupTest()
         {
-            applicationManager = new ApplicationManager();
-            applicationManager.Navi.GoToHomePage();
-            applicationManager.Auth.Login(new AccountData("admin", "secret"));
+            applicationManager =  TestSuteFixture.applicationManager;
         }
 
     }
