@@ -5,7 +5,7 @@
     {
         public static ApplicationManager applicationManager;
 
-        [SetUp]
+        [OneTimeSetUp]
         public void InintApplicationManager()
         {
             applicationManager = new ApplicationManager();
@@ -13,7 +13,7 @@
             applicationManager.Auth.Login(new AccountData("admin", "secret"));
         }
 
-        [TearDown]
+        [OneTimeTearDown]
         public void StopApplicationManager()
         {
             applicationManager.Stop();
