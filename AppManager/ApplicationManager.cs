@@ -84,5 +84,20 @@ namespace Address_Book_Test_N
             }
             return applicationmanager.Value;
         }
+
+        public void Quit()
+        {
+
+            try
+            {
+                driver.Quit();
+            }
+            catch (Exception)
+            {
+                // Ignore errors if unable to close the browser
+            }
+
+        }
+
     }
 }
