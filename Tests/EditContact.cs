@@ -1,7 +1,7 @@
 ﻿namespace Address_Book_Test_N
 {
     [TestFixture]
-    public class EditContact : TestBase
+    public class EditContact : AuthTestBase
     {
         [Test]
         public void ContactEditor()

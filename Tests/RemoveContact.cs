@@ -1,7 +1,7 @@
 ﻿namespace Address_Book_Test_N
 { 
     [TestFixture]
-    public class RemoveContact : TestBase
+    public class RemoveContact : AuthTestBase
     {
 
             [Test]

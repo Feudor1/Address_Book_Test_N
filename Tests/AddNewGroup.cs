@@ -1,7 +1,7 @@
 namespace Address_Book_Test_N
 {
     [TestFixture]
-    public class AddNewGroup : TestBase
+    public class AddNewGroup : AuthTestBase
 
     {
         [Test]

@@ -1,7 +1,7 @@
 ﻿namespace Address_Book_Test_N
 {
     [TestFixture]
-    public class GroupModification : TestBase
+    public class GroupModification : AuthTestBase
     {
         [Test]
         public void TheGroupModificatonTest()
