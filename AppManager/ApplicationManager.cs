@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium;
+using System.ComponentModel;
 
 namespace Address_Book_Test_N
 {
@@ -12,6 +13,7 @@ namespace Address_Book_Test_N
         protected ContactHelper contactHelper;
         protected IWebDriver driver;
         protected string baseURL;
+        private static ThreadLocal <ApplicationManager> applicationmanager = new ThreadLocal<ApplicationManager>();
 
         public ApplicationManager()
         {
@@ -21,6 +23,18 @@ namespace Address_Book_Test_N
             navigationHelper = new NavigationHelper(this, baseURL);
             groupHelper = new GroupHelper(this);
             contactHelper = new ContactHelper(this);
+        }
+
+        ~ApplicationManager()
+        {
+            try
+            {
+                driver.Quit();
+            }
+            catch (Exception)
+            {
+                // Ignore errors if unable to close the browser
+            }
         }
 
         public IWebDriver Driver 
@@ -60,10 +74,20 @@ namespace Address_Book_Test_N
             {
                 return contactHelper;
             }
+        }   
+
+        public static ApplicationManager GetInstance ()
+        {
+            if (!applicationmanager.IsValueCreated)
+            {
+                applicationmanager.Value = new ApplicationManager();
+            }
+            return applicationmanager.Value;
         }
 
-        public void Stop()
+        public void Quit()
         {
+
             try
             {
                 driver.Quit();
@@ -72,6 +96,8 @@ namespace Address_Book_Test_N
             {
                 // Ignore errors if unable to close the browser
             }
+
         }
+
     }
 }

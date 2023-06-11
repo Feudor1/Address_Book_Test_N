@@ -8,7 +8,7 @@
         [SetUp]
         public void SetupTest()
         {
-            applicationManager =  TestSuteFixture.applicationManager;
+            applicationManager = ApplicationManager.GetInstance();
         }
 
     }

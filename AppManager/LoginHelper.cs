@@ -16,5 +16,10 @@ namespace Address_Book_Test_N
             Type(By.Name("pass"), account.Password);
             driver.FindElement(By.XPath("//input[@value='Login']")).Click();
         }
+        public void Logout(AccountData account)
+        {
+            driver.FindElement(By.Name("logout")).Click();
+        }
+
     }
 }
