@@ -3,20 +3,13 @@
     [SetUpFixture]
     public class TestSuteFixture
     {
-        public static ApplicationManager applicationManager;
 
         [OneTimeSetUp]
         public void InintApplicationManager()
         {
-            applicationManager = new ApplicationManager();
+            ApplicationManager applicationManager = ApplicationManager.GetInstance();
             applicationManager.Navi.GoToHomePage();
             applicationManager.Auth.Login(new AccountData("admin", "secret"));
-        }
-
-        [OneTimeTearDown]
-        public void StopApplicationManager()
-        {
-            applicationManager.Stop();
         }
     }
 }
