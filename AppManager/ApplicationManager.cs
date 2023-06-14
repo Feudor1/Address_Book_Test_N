@@ -25,17 +25,17 @@ namespace Address_Book_Test_N
             contactHelper = new ContactHelper(this);
         }
 
-        ~ApplicationManager()
-        {
-            try
-            {
-                driver.Quit();
-            }
-            catch (Exception)
-            {
+     //   ~ApplicationManager()
+     //   {
+     //       try
+     //       {
+     //           driver.Quit();
+     //       }
+      //      catch (Exception)
+     //       {
                 // Ignore errors if unable to close the browser
-            }
-        }
+      //      }
+//        }
 
         public IWebDriver Driver 
         {
@@ -87,6 +87,7 @@ namespace Address_Book_Test_N
             return applicationmanager.Value;
         }
 
+        [OneTimeTearDown]
         public void Quit()
         {
 
