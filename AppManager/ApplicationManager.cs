@@ -80,7 +80,9 @@ namespace Address_Book_Test_N
         {
             if (!applicationmanager.IsValueCreated)
             {
-                applicationmanager.Value = new ApplicationManager();
+                ApplicationManager newInstance= new ApplicationManager();
+                newInstance.Navi.GoToHomePage();
+                applicationmanager.Value = newInstance;
             }
             return applicationmanager.Value;
         }
