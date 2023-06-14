@@ -24,11 +24,11 @@
             applicationManager.Auth.Logout();
 
             //Action
-            AccountData account = new AccountData("admin", "123456");
-            applicationManager.Auth.Login(account);
+            AccountData account1 = new AccountData("admin", "123456");
+            applicationManager.Auth.Login(account1);
 
             //verification
-            Assert.IsFalse(applicationManager.Auth.IsloggedIn(account));
+            Assert.IsFalse(applicationManager.Auth.IsloggedIn(account1));
         }
     }
 }
