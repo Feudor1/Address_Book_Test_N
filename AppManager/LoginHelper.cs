@@ -45,6 +45,7 @@ namespace Address_Book_Test_N
             if (IsloggedIn())
             {
                 driver.FindElement(By.LinkText("Logout")).Click();
+              // Может пригодится позже 
               //  driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
               //  driver.FindElement(By.Name("user"));
 

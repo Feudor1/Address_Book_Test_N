@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using System.Data;
 
 namespace Address_Book_Test_N
 {
@@ -13,10 +14,26 @@ namespace Address_Book_Test_N
             return this;
         }
 
-        public GroupHelper Modify(int v, GroupData newData)
+        public void GroupListCheck() 
         {
             manager.Navi.GoToGroupPage();
-            SelectGroup(v);
+                if (driver.FindElements(By.CssSelector(".group")).Count <= 0)
+
+                {
+                InitGroupCreation();
+                Type(By.Name("group_name"), "Если групп нет");
+                Type(By.Name("group_header"), "Если групп нет");
+                Type(By.Name("group_footer"), "Если групп нет");
+                SubmitGroupCreation();
+                manager.Navi.GoToGroupPage();
+                //manager.addNewGroup.CreateNewGroupTest();
+            }
+
+        }
+        public GroupHelper Modify(GroupData newData)
+        {
+            manager.Navi.GoToGroupPage();
+            SelectGroup();
             FindEditButton();
             FillGroupForm(newData);
             FindUpdateGroupButton();
@@ -35,10 +52,10 @@ namespace Address_Book_Test_N
             return this;
         }
 
-        public GroupHelper Remove(int v)
+        public GroupHelper Remove()
         {
             manager.Navi.GoToGroupPage();
-            SelectGroup(v);
+            SelectGroup();
             DeleteGroup();
             manager.Navi.GoToGroupPage();
             return this;
@@ -74,9 +91,9 @@ namespace Address_Book_Test_N
             return this;
         }
 
-        public GroupHelper SelectGroup(int index)
+        public GroupHelper SelectGroup()
         {
-            driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + index + "]")).Click();
+            driver.FindElement(By.CssSelector("[name='selected[]']:first-of-type")).Click();
             return this;
         }
     }
