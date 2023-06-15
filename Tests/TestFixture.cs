@@ -16,7 +16,7 @@
             applicationManager.Auth.Login(new AccountData("admin", "secret"));
         }
 
-        [TearDown]
+        [OneTimeTearDown]
         public void StopApplicationManager()
         {
             applicationManager.Quit();
