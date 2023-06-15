@@ -1,4 +1,6 @@
-﻿namespace Address_Book_Test_N
+﻿using NUnit.Framework.Internal;
+
+namespace Address_Book_Test_N
 {
     public class TestBase
     {
@@ -8,7 +10,7 @@
         [SetUp]
         public void SetupApplicationManager()
         {
-            applicationManager = ApplicationManager.GetInstance();
+            applicationManager = TestSuteFixture.applicationManager;
         }
 
         //[OneTimeTearDown]
