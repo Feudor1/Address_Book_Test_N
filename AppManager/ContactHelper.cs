@@ -72,6 +72,23 @@ namespace Address_Book_Test_N
             return this;
         }
 
+        public void ContactListCheck()
+        {
+            manager.Navi.GoToHomePage();
+            if (driver.FindElements(By.Name("selected[]")).Count <= 0)
+
+            {
+                driver.FindElement(By.LinkText("add new")).Click();
+                Type(By.Name("firstname"), "Если контактов нет");
+                Type(By.Name("middlename"), "Если контактов нет");
+                Type(By.Name("lastname"), "Если контактов нет");
+                //Вот эта дичь для поиска кнопки Enter
+                driver.FindElement(By.XPath("//div[@id='content']/form/input[21]")).Click();
+                manager.Navi.GoToGroupPage();
+            }
+
+        }
+
         public ContactHelper FindEditButton()
         {
             driver.FindElement(By.XPath("//img[@alt='Edit']")).Click();

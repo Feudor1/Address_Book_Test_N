@@ -16,14 +16,17 @@ namespace Address_Book_Test_N
 
         public void GroupListCheck() 
         {
-            //if (driver.FindElement(By.XPath("//span[contains(@class, 'group')]")).Count)
-            int i = 0;
-            i = driver.FindElements(By.CssSelector(".group")).Count;
+            manager.Navi.GoToGroupPage();
+                if (driver.FindElements(By.CssSelector(".group")).Count <= 0)
 
-            if (driver.FindElements(By.CssSelector(".group")).Count > 0)
-
-            {
-                manager.addNewGroup.CreateNewGroupTest();
+                {
+                InitGroupCreation();
+                Type(By.Name("group_name"), "Если групп нет");
+                Type(By.Name("group_header"), "Если групп нет");
+                Type(By.Name("group_footer"), "Если групп нет");
+                SubmitGroupCreation();
+                manager.Navi.GoToGroupPage();
+                //manager.addNewGroup.CreateNewGroupTest();
             }
 
         }
@@ -90,7 +93,7 @@ namespace Address_Book_Test_N
 
         public GroupHelper SelectGroup()
         {
-            driver.FindElement(By.Name("selected[]")).Click();
+            driver.FindElement(By.CssSelector("[name='selected[]']:first-of-type")).Click();
             return this;
         }
     }
