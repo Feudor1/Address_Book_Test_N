@@ -11,5 +11,11 @@
             applicationManager = ApplicationManager.GetInstance();
         }
 
+        [OneTimeTearDown]
+        public void StopApplicationManager()
+        {
+            applicationManager.Quit();
+        }
+
     }
 }

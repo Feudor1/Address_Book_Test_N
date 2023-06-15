@@ -18,25 +18,25 @@ namespace Address_Book_Test_N
         public ApplicationManager()
         {
             driver = new ChromeDriver();
-            baseURL = "http://localhost/addressbook/";
+            baseURL = "http://localhost/addressbook";
             loginHelper = new LoginHelper(this);
             navigationHelper = new NavigationHelper(this, baseURL);
             groupHelper = new GroupHelper(this);
             contactHelper = new ContactHelper(this);
         }
 
-     /*  ~ApplicationManager()
-        {
-            try
-            {
-                driver.Quit();
-            }
-           catch (Exception)
-            {
-                // Ignore errors if unable to close the browser
-            }
-        }
-     */
+        //~ApplicationManager()
+        //{
+        //    try
+        //    {
+        //        driver.Quit();
+        //    }
+        //   catch (Exception)
+        //    {
+        //        // Ignore errors if unable to close the browser
+        //    }
+        //}
+     
 
         public IWebDriver Driver 
         {
@@ -69,26 +69,35 @@ namespace Address_Book_Test_N
             }
         }
 
+        public AddNewGroup addNewGroup
+        {
+            get
+            {
+                return addNewGroup;
+            }
+        }
+
+
+
         public ContactHelper ContactHP
         {
             get
             {
                 return contactHelper;
             }
-        }   
+        }
 
-        public static ApplicationManager GetInstance ()
+        public static ApplicationManager GetInstance()
         {
             if (!applicationmanager.IsValueCreated)
             {
-                ApplicationManager newInstance= new ApplicationManager();
+                ApplicationManager newInstance = new ApplicationManager();
                 newInstance.Navi.GoToHomePage();
                 applicationmanager.Value = newInstance;
             }
             return applicationmanager.Value;
         }
 
-        [OneTimeTearDown]
         public void Quit()
         {
 

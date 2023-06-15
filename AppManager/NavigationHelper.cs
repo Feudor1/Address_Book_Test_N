@@ -15,7 +15,13 @@ namespace Address_Book_Test_N
             driver.Navigate().GoToUrl(baseURL);
         }
         public void GoToGroupPage()
+
         {
+            if (driver.Url == baseURL + "/group.php"  && IsElementPresent(By.Name("New")))
+
+            {
+                return;
+            }
             driver.FindElement(By.LinkText("groups")).Click();
         }
     }
