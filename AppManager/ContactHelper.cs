@@ -109,16 +109,16 @@ namespace Address_Book_Test_N
 
         public List<ContactsData> GetContactList()
         {
-            List<ContactsData> groups = new List <ContactsData>();
+ 
+            List<ContactsData> contact = new List <ContactsData>();
             manager.Navi.GoToHomePage();
-            ICollection<IWebElement> elements = driver.FindElements(By.Name("selected[]"));
+            ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("input[type='checkbox'][name='selected[]']"));
+
             foreach (IWebElement element in elements)
             {
-                //GroupData group = new GroupData(element.Text) ;
-                groups.Add(new ContactsData(element.Text));
+                contact.Add(new ContactsData(element.Text));
             }
-            //driver.FindElements(By.CssSelector(".group")).Count;
-            return groups;
+            return contact;
         }
     }
 }
