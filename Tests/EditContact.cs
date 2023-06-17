@@ -40,8 +40,8 @@ namespace Address_Book_Test_N
             OldAccount[0].MiddleName = NewDAta.MiddleName;
             OldAccount.Sort();
             NewAccount.Sort();
-            Assert.AreNotEqual(OldAccount, NewAccount);
-            //Assert.AreEqual(OldAccount, NewAccount);
+            //Assert.AreNotEqual(OldAccount, NewAccount);
+            Assert.AreEqual(OldAccount, NewAccount);
         }
     }
 }

@@ -9,8 +9,9 @@ namespace Address_Book_Test_N
         [Test]
         public void CreateNewContact()
         {
-            ContactsData contact = new ContactsData("Ivanov");
-            contact.MiddleName = "Ivan";
+            ContactsData contact = new ContactsData("Ivan");
+            contact.FirstName = "Ivan";
+            contact.MiddleName = "Ivanov";
             contact.LastName = "Ivanovich";
             contact.NickName = "IvanovIvan";
             contact.Title = "Ivan";
@@ -33,13 +34,16 @@ namespace Address_Book_Test_N
             contact.Address2 = "dsfasdfsadfsdf";
             contact.Home = "asdfsfd";
             contact.Notes = "asdfasfdfdasfdsa";
-            List<ContactsData> OldAccount = applicationManager.ContactHP.GetContactList();
+
+            List<ContactsData> OldContact = applicationManager.ContactHP.GetContactList();
+
             applicationManager.ContactHP.AddANewContact(contact);
-            List<ContactsData> NewAccount = applicationManager.ContactHP.GetContactList();
-            OldAccount.Add(contact);
-            OldAccount.Sort();
-            NewAccount.Sort();
-            Assert.AreEqual(OldAccount, NewAccount);
+
+            List<ContactsData> NewContact = applicationManager.ContactHP.GetContactList();
+            OldContact.Add(contact);
+            OldContact.Sort();
+            NewContact.Sort();
+            Assert.AreEqual(OldContact, NewContact);
         }
 
         [Test]
