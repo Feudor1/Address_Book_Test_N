@@ -1,3 +1,5 @@
+using System.Security.Cryptography;
+
 namespace Address_Book_Test_N
 {
     [TestFixture]
@@ -31,7 +33,11 @@ namespace Address_Book_Test_N
             contact.Address2 = "dsfasdfsadfsdf";
             contact.Home = "asdfsfd";
             contact.Notes = "asdfasfdfdasfdsa";
+            List<ContactsData> OldAccount = applicationManager.ContactHP.GetContactList();
             applicationManager.ContactHP.AddANewContact(contact);
+            List<ContactsData> NewAccount = applicationManager.ContactHP.GetContactList();
+
+            Assert.AreEqual(OldAccount.Count + 1, NewAccount.Count);
         }
 
         [Test]
@@ -61,7 +67,11 @@ namespace Address_Book_Test_N
             contact.Address2 = " ";
             contact.Home = " ";
             contact.Notes = " ";
+            List<ContactsData> OldAccount = applicationManager.ContactHP.GetContactList();
             applicationManager.ContactHP.AddANewContact(contact);
+            List<ContactsData> NewAccount = applicationManager.ContactHP.GetContactList();
+
+            Assert.AreEqual(OldAccount.Count + 1, NewAccount.Count);
         }
     }
 }

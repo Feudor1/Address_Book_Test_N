@@ -1,6 +1,7 @@
-﻿namespace Address_Book_Test_N
+﻿using System.Collections.Generic;
+namespace Address_Book_Test_N
 {
-    public class GroupData
+    public class GroupData : IEquatable<GroupData>
     {
         private string name;
         private string header = "";
@@ -9,6 +10,24 @@
         public GroupData(string name)
         {
             this.name = name;
+        }
+        public bool Equals(GroupData other) 
+        {
+            if (object.ReferenceEquals(other, null))
+            {
+                return false ;
+            }
+
+            if (object.ReferenceEquals(this, other))
+            {
+                return true;
+            }
+            return Name == other.Name;
+        }
+
+        public int GetHashCode() 
+        {
+            return name.GetHashCode();
         }
 
         public string Name

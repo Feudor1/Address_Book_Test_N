@@ -107,5 +107,18 @@ namespace Address_Book_Test_N
             return this;
         }
 
+        public List<ContactsData> GetContactList()
+        {
+            List<ContactsData> groups = new List <ContactsData>();
+            manager.Navi.GoToHomePage();
+            ICollection<IWebElement> elements = driver.FindElements(By.Name("selected[]"));
+            foreach (IWebElement element in elements)
+            {
+                //GroupData group = new GroupData(element.Text) ;
+                groups.Add(new ContactsData(element.Text));
+            }
+            //driver.FindElements(By.CssSelector(".group")).Count;
+            return groups;
+        }
     }
 }

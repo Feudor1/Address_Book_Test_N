@@ -1,6 +1,8 @@
-﻿namespace Address_Book_Test_N
+﻿using System.Xml.Linq;
+
+namespace Address_Book_Test_N
 {
-    public class ContactsData
+    public class ContactsData : IEquatable<ContactsData>
     {
 
         private string firestName;
@@ -32,16 +34,48 @@
         {
             firestName = name;
         }
+
+        public bool Equals(ContactsData other)
+        {
+            if (object.ReferenceEquals(other, null))
+            {
+                return false;
+            }
+
+            if (object.ReferenceEquals(this, other))
+            {
+                return true;
+            }
+            return firestName == other.firestName && middleName == other.middleName;
+        }
+
+        public int GetHashCode()
+        {
+            return firestName.GetHashCode();
+        }
         public string FirstName
         {
-            get { return firestName; }
-            set { firestName = value; }
+            get 
+            { 
+                return firestName; 
+            }
+
+            set 
+            { 
+                firestName = value; 
+            }
         }
 
         public string MiddleName
         {
-            get { return middleName; }
-            set { middleName = value; }
+            get 
+            { 
+                return middleName; 
+            }
+            set 
+            { 
+                middleName = value; 
+            }
         }
 
         public string LastName
