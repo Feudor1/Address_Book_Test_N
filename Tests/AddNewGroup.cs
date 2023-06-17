@@ -19,8 +19,10 @@ namespace Address_Book_Test_N
             applicationManager.GruopHP.CreateGroup(group);
 
             List <GroupData> Newgroups = applicationManager.GruopHP.GetGroupList();
-
-            Assert.AreEqual(Oldgroups.Count +1, Newgroups.Count);
+            Oldgroups.Add(group);
+            Oldgroups.Sort();
+            Newgroups.Sort();   
+            Assert.AreEqual(Oldgroups, Newgroups);
 
         }
 
@@ -38,8 +40,10 @@ namespace Address_Book_Test_N
             applicationManager.GruopHP.CreateGroup(group);
 
             List<GroupData> Newgroups = applicationManager.GruopHP.GetGroupList();
-
-            Assert.AreEqual(Oldgroups.Count + 1, Newgroups.Count);
+            Oldgroups.Add(group);
+            Oldgroups.Sort();
+            Newgroups.Sort();
+            Assert.AreEqual(Oldgroups, Newgroups);
         }
 
         [Test]
@@ -54,8 +58,10 @@ namespace Address_Book_Test_N
             applicationManager.GruopHP.CreateGroup(group);
 
             List<GroupData> Newgroups = applicationManager.GruopHP.GetGroupList();
-
-            Assert.AreEqual(Oldgroups.Count, Newgroups.Count);
+            //Oldgroups.Add(group);
+            Oldgroups.Sort();
+            Newgroups.Sort();
+            Assert.AreEqual(Oldgroups, Newgroups);
 
         }
 

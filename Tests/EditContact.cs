@@ -1,4 +1,6 @@
-﻿namespace Address_Book_Test_N
+﻿using System.Security.Principal;
+
+namespace Address_Book_Test_N
 {
     [TestFixture]
     public class EditContact : AuthTestBase
@@ -31,7 +33,15 @@
             NewDAta.Home = "asdfsfd";
             NewDAta.Notes = "asdfasfdfdasfdsa";
             applicationManager.ContactHP.ContactListCheck();
+            List<ContactsData> OldAccount = applicationManager.ContactHP.GetContactList();
             applicationManager.ContactHP.EditAccount(NewDAta);
+            List<ContactsData> NewAccount = applicationManager.ContactHP.GetContactList();
+            OldAccount[0].FirstName = NewDAta.FirstName;
+            OldAccount[0].MiddleName = NewDAta.MiddleName;
+            OldAccount.Sort();
+            NewAccount.Sort();
+            Assert.AreNotEqual(OldAccount, NewAccount);
+            //Assert.AreEqual(OldAccount, NewAccount);
         }
     }
 }

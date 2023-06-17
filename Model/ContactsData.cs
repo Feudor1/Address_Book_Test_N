@@ -2,7 +2,7 @@
 
 namespace Address_Book_Test_N
 {
-    public class ContactsData : IEquatable<ContactsData>
+    public class ContactsData : IEquatable<ContactsData>, IComparable<ContactsData>
     {
 
         private string firestName;
@@ -35,6 +35,16 @@ namespace Address_Book_Test_N
             firestName = name;
         }
 
+        public int CompareTo(ContactsData other)
+        {
+            if (object.ReferenceEquals(other, null))
+            {
+                return 1;
+            }
+
+            return firestName.CompareTo(other.firestName) + middleName.CompareTo(other.middleName);
+        }
+
         public bool Equals(ContactsData other)
         {
             if (object.ReferenceEquals(other, null))
@@ -49,10 +59,16 @@ namespace Address_Book_Test_N
             return firestName == other.firestName && middleName == other.middleName;
         }
 
-        public int GetHashCode()
+        public override int GetHashCode()
         {
             return firestName.GetHashCode();
         }
+
+        public override String ToString()
+        {
+            return "name = " + firestName + ", middlename = " + middleName;
+        }
+
         public string FirstName
         {
             get 

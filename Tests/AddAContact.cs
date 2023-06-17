@@ -36,8 +36,10 @@ namespace Address_Book_Test_N
             List<ContactsData> OldAccount = applicationManager.ContactHP.GetContactList();
             applicationManager.ContactHP.AddANewContact(contact);
             List<ContactsData> NewAccount = applicationManager.ContactHP.GetContactList();
-
-            Assert.AreEqual(OldAccount.Count + 1, NewAccount.Count);
+            OldAccount.Add(contact);
+            OldAccount.Sort();
+            NewAccount.Sort();
+            Assert.AreEqual(OldAccount, NewAccount);
         }
 
         [Test]
@@ -70,8 +72,10 @@ namespace Address_Book_Test_N
             List<ContactsData> OldAccount = applicationManager.ContactHP.GetContactList();
             applicationManager.ContactHP.AddANewContact(contact);
             List<ContactsData> NewAccount = applicationManager.ContactHP.GetContactList();
-
-            Assert.AreEqual(OldAccount.Count + 1, NewAccount.Count);
+            OldAccount.Add(contact);
+            OldAccount.Sort();
+            NewAccount.Sort();
+            Assert.AreEqual(OldAccount, NewAccount);
         }
     }
 }
