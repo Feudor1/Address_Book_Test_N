@@ -30,9 +30,10 @@ namespace Address_Book_Test_N
         private string home = "";
         private string notes = "";
 
-        public ContactsData(string name)
+        public ContactsData (string name, string lastName)
         {
             FirstName = name;
+            LastName = lastName;
         }
 
         public int CompareTo(ContactsData other)
@@ -42,7 +43,12 @@ namespace Address_Book_Test_N
                 return 1;
             }
 
-            return FirstName.CompareTo(other.FirstName) + LastName.CompareTo(other.LastName);
+            if (LastName == other.LastName)
+            {
+                return FirstName.CompareTo(other.FirstName);
+            }
+
+            return LastName.CompareTo(other.LastName);
         }
 
         public bool Equals(ContactsData other)

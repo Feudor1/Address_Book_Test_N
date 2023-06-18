@@ -110,32 +110,50 @@ namespace Address_Book_Test_N
             return this;
         }
 
-        public List<ContactsData> GetContactFirstNameList()
+        public List<ContactsData> GetContactList()
         {
-            List<ContactsData> firstnameContact = new List<ContactsData>();
+            List<ContactsData> contacts = new List<ContactsData>();
             manager.Navi.GoToHomePage();
-            ICollection<IWebElement> firstnames = driver.FindElements(By.CssSelector("table td:nth-child(3)"));
-            foreach (IWebElement firstname in firstnames)
+            ICollection<IWebElement> firstNames = driver.FindElements(By.CssSelector("table td:nth-child(3)"));
+            ICollection<IWebElement> lastNames = driver.FindElements(By.CssSelector("table td:nth-child(2)"));
+
+            for (int i = 0; i < firstNames.Count && i < lastNames.Count; i++)
             {
-                ContactsData contact = new ContactsData(firstname.Text);
-                //contact.FirstName = firstname.Text;
-                firstnameContact.Add(contact);
+                ContactsData contact = new ContactsData(firstNames.ElementAt(i).Text, lastNames.ElementAt(i).Text);
+                contacts.Add(contact);
             }
-            return firstnameContact;
+
+            return contacts;
         }
 
-        public List<ContactsData> GetContactLastNameList()
-        {
-            List<ContactsData> lastnameContact = new List<ContactsData>();
-            manager.Navi.GoToHomePage();
-            ICollection<IWebElement> lastNames = driver.FindElements(By.CssSelector("table td:nth-child(2)"));
-            foreach (IWebElement lastname in lastNames)
-            {
-                ContactsData contact = new ContactsData(lastname.Text);
-               // contact.LastName = lastname.Text;
-                lastnameContact.Add(contact);
-            }
-            return lastnameContact;
-        }
+
+
+        //public List<ContactsData> GetContactFirstNameList()
+        //{
+        //    List<ContactsData> firstnameContact = new List<ContactsData>();
+        //    manager.Navi.GoToHomePage();
+        //    ICollection<IWebElement> firstnames = driver.FindElements(By.CssSelector("table td:nth-child(3)"));
+        //    foreach (IWebElement firstname in firstnames)
+        //    {
+        //        ContactsData contact = new ContactsData(firstname.Text);
+        //        //contact.FirstName = firstname.Text;
+        //        firstnameContact.Add(contact);
+        //    }
+        //    return firstnameContact;
+        //}
+
+        //public List<ContactsData> GetContactLastNameList()
+        //{
+        //    List<ContactsData> lastnameContact = new List<ContactsData>();
+        //    manager.Navi.GoToHomePage();
+        //    ICollection<IWebElement> lastNames = driver.FindElements(By.CssSelector("table td:nth-child(2)"));
+        //    foreach (IWebElement lastname in lastNames)
+        //    {
+        //        ContactsData contact = new ContactsData(lastname.Text);
+        //       // contact.LastName = lastname.Text;
+        //        lastnameContact.Add(contact);
+        //    }
+        //    return lastnameContact;
+        //}
     }
 }
