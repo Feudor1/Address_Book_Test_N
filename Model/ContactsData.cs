@@ -42,7 +42,7 @@ namespace Address_Book_Test_N
                 return 1;
             }
 
-            return FirstName.CompareTo(other.FirstName) + MiddleName.CompareTo(other.MiddleName);
+            return FirstName.CompareTo(other.FirstName) + LastName.CompareTo(other.LastName);
         }
 
         public bool Equals(ContactsData other)
@@ -56,17 +56,29 @@ namespace Address_Book_Test_N
             {
                 return true;
             }
-            return FirstName == other.FirstName && MiddleName == other.MiddleName;
+            return FirstName == other.FirstName && LastName == other.LastName;
         }
+
 
         public override int GetHashCode()
         {
-            return FirstName.GetHashCode();
+            unchecked
+            {
+                int hash = 17;
+                hash = hash * 23 + (FirstName != null ? FirstName.GetHashCode() : 0);
+                hash = hash * 23 + (LastName != null ? LastName.GetHashCode() : 0);
+                return hash;
+            }
         }
+        //public override int GetHashCode()
+        //{
+
+        //    return FirstName.GetHashCode() + MiddleName.GetHashCode;
+        //}
 
         public override String ToString()
         {
-            return "name = " + FirstName + ", middlename = " + MiddleName;
+            return "name = " + FirstName + ", lastname = " + LastName;
         }
 
         public string FirstName

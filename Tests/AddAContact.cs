@@ -11,8 +11,8 @@ namespace Address_Book_Test_N
         {
             ContactsData contact = new ContactsData("Ivan");
             contact.FirstName = "Ivan";
-            contact.MiddleName = "Ivanov";
-            contact.LastName = "Ivanovich";
+            contact.MiddleName = "Ivanovich";
+            contact.LastName = "Ivanov";
             contact.NickName = "IvanovIvan";
             contact.Title = "Ivan";
             contact.Company = "Accesssoftec";
@@ -35,15 +35,21 @@ namespace Address_Book_Test_N
             contact.Home = "asdfsfd";
             contact.Notes = "asdfasfdfdasfdsa";
 
-            List<ContactsData> OldContact = applicationManager.ContactHP.GetContactList();
-
+            List<ContactsData>OldName = applicationManager.ContactHP.GetContactFirstNameList();
+            List<ContactsData> OldLastName = applicationManager.ContactHP.GetContactLastNameList();
             applicationManager.ContactHP.AddANewContact(contact);
 
-            List<ContactsData> NewContact = applicationManager.ContactHP.GetContactList();
-            OldContact.Add(contact);
-            OldContact.Sort();
-            NewContact.Sort();
-            Assert.AreEqual(OldContact, NewContact);
+            List<ContactsData> NewName = applicationManager.ContactHP.GetContactFirstNameList();
+            List<ContactsData> NewLastName = applicationManager.ContactHP.GetContactLastNameList();
+
+            OldName.Add(contact);
+            OldLastName.Add(contact);
+            OldName.Sort();
+            OldLastName.Sort();
+            NewName.Sort();
+            NewLastName.Sort();
+            Assert.AreEqual(OldName, NewName);
+            Assert.AreEqual(OldLastName, NewLastName);
         }
 
         [Test]
@@ -73,9 +79,9 @@ namespace Address_Book_Test_N
             contact.Address2 = " ";
             contact.Home = " ";
             contact.Notes = " ";
-            List<ContactsData> OldAccount = applicationManager.ContactHP.GetContactList();
+            List<ContactsData> OldAccount = applicationManager.ContactHP.GetContactFirstNameList();
             applicationManager.ContactHP.AddANewContact(contact);
-            List<ContactsData> NewAccount = applicationManager.ContactHP.GetContactList();
+            List<ContactsData> NewAccount = applicationManager.ContactHP.GetContactFirstNameList();
             OldAccount.Add(contact);
             OldAccount.Sort();
             NewAccount.Sort();

@@ -1,7 +1,10 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Framework.Internal.Execution;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Internal;
 using OpenQA.Selenium.Support.UI;
 using System;
+using System.Reflection;
+using System.Xml.Linq;
 
 namespace Address_Book_Test_N
 {
@@ -107,19 +110,32 @@ namespace Address_Book_Test_N
             return this;
         }
 
-        public List<ContactsData> GetContactList()
+        public List<ContactsData> GetContactFirstNameList()
         {
  
-            List<ContactsData> contacts = new List <ContactsData>();
+            List<ContactsData> firstnameContact = new List <ContactsData>();
             manager.Navi.GoToHomePage();
-            ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("input[type='checkbox'][name='selected[]']"));
-
-            foreach (IWebElement element in elements)
+            ICollection<IWebElement> firstnames = driver.FindElements(By.CssSelector("table td:nth-child(3)"));
+            foreach (IWebElement firstname in firstnames)
             {
-                ContactsData contact = new ContactsData(element.Text);
-                contacts.Add(new ContactsData(element.Text));
+                ContactsData contact = new ContactsData(firstname.Text);
+                firstnameContact.Add(new ContactsData(firstname.Text));
             }
-            return contacts;
+            return firstnameContact;
+        }
+
+        public List<ContactsData> GetContactLastNameList()
+        {
+
+            List<ContactsData> lastnameContact = new List<ContactsData>();
+            manager.Navi.GoToHomePage();
+            ICollection<IWebElement> lastNames = driver.FindElements(By.CssSelector("table td:nth-child(2)"));
+            foreach (IWebElement lastname in lastNames)
+            {
+                ContactsData contact = new ContactsData(lastname.Text);
+                lastnameContact.Add(new ContactsData(lastname.Text));
+            }
+            return lastnameContact;
         }
     }
 }

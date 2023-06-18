@@ -33,11 +33,11 @@ namespace Address_Book_Test_N
             NewDAta.Home = "asdfsfd";
             NewDAta.Notes = "asdfasfdfdasfdsa";
             applicationManager.ContactHP.ContactListCheck();
-            List<ContactsData> OldAccount = applicationManager.ContactHP.GetContactList();
+            List<ContactsData> OldAccount = applicationManager.ContactHP.GetContactFirstNameList();
             applicationManager.ContactHP.EditAccount(NewDAta);
-            List<ContactsData> NewAccount = applicationManager.ContactHP.GetContactList();
+            List<ContactsData> NewAccount = applicationManager.ContactHP.GetContactFirstNameList();
             OldAccount[0].FirstName = NewDAta.FirstName;
-            OldAccount[0].MiddleName = NewDAta.MiddleName;
+            OldAccount[0].LastName = NewDAta.LastName;
             OldAccount.Sort();
             NewAccount.Sort();
             //Assert.AreNotEqual(OldAccount, NewAccount);
