@@ -1,4 +1,8 @@
-﻿using System.Security.Principal;
+﻿using OpenQA.Selenium.Remote;
+using OpenQA.Selenium.Support.Events;
+using System.Data;
+using System.Security.Principal;
+using OpenQA.Selenium;
 
 namespace Address_Book_Test_N
 {
@@ -8,7 +12,8 @@ namespace Address_Book_Test_N
         [Test]
         public void ContactEditor()
         {
-            ContactsData NewDAta = new ContactsData("Petr", "Petrov");
+            
+            ContactsData NewDAta = new ContactsData("Petr", "Petrov"); 
             NewDAta.MiddleName = "Petrovich";
             NewDAta.NickName = "PrtrovPetr";
             NewDAta.Title = "Petr";
@@ -32,15 +37,15 @@ namespace Address_Book_Test_N
             NewDAta.Home = "asdfsfd";
             NewDAta.Notes = "asdfasfdfdasfdsa";
             applicationManager.ContactHP.ContactListCheck();
-            //List<ContactsData> OldAccount = applicationManager.ContactHP.GetContactFirstNameList();
-            //applicationManager.ContactHP.EditAccount(NewDAta);
-            //List<ContactsData> NewAccount = applicationManager.ContactHP.GetContactFirstNameList();
-            //OldAccount[0].FirstName = NewDAta.FirstName;
-            //OldAccount[0].LastName = NewDAta.LastName;
-            //OldAccount.Sort();
-            //NewAccount.Sort();
-            ////Assert.AreNotEqual(OldAccount, NewAccount);
-            //Assert.AreEqual(OldAccount, NewAccount);
+            List<ContactsData> OldAccount = applicationManager.ContactHP.GetContactList();
+            applicationManager.ContactHP.EditAccount(NewDAta);
+            List<ContactsData> NewAccount = applicationManager.ContactHP.GetContactList();
+            OldAccount[0].FirstName = NewDAta.FirstName;
+            OldAccount[0].LastName = NewDAta.LastName;
+            OldAccount.Sort();
+            NewAccount.Sort();
+            //Assert.AreNotEqual(OldAccount, NewAccount);
+            Assert.AreEqual(OldAccount, NewAccount);
         }
     }
 }

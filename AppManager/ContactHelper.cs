@@ -41,6 +41,25 @@ namespace Address_Book_Test_N
         }
         public ContactHelper FillTheContactData(ContactsData contact)
         {
+            driver.FindElement(By.Name("firstname")).Clear();
+            driver.FindElement(By.Name("middlename")).Clear();
+            driver.FindElement(By.Name("lastname")).Clear();
+            driver.FindElement(By.Name("nickname")).Clear();
+            driver.FindElement(By.Name("title")).Clear();
+            driver.FindElement(By.Name("company")).Clear();
+            driver.FindElement(By.Name("address")).Clear();
+            driver.FindElement(By.Name("home")).Clear();
+            driver.FindElement(By.Name("mobile")).Clear();
+            driver.FindElement(By.Name("work")).Clear();
+            driver.FindElement(By.Name("fax")).Clear();
+            driver.FindElement(By.Name("email")).Clear();
+            driver.FindElement(By.Name("email3")).Clear();
+            driver.FindElement(By.Name("homepage")).Clear();
+            driver.FindElement(By.Name("byear")).Clear();
+            driver.FindElement(By.Name("ayear")).Clear();
+            driver.FindElement(By.Name("address2")).Clear();
+            driver.FindElement(By.Name("phone2")).Clear();
+            driver.FindElement(By.Name("notes")).Clear();
             Type(By.Name("firstname"), contact.FirstName);
             Type(By.Name("middlename"), contact.MiddleName);
             Type(By.Name("lastname"), contact.LastName);

@@ -85,6 +85,9 @@ namespace Address_Book_Test_N
         }
         public GroupHelper FillGroupForm(GroupData group)
         {
+            driver.FindElement(By.Name("group_name")).Clear();
+            driver.FindElement(By.Name("group_header")).Clear();
+            driver.FindElement(By.Name("group_footer")).Clear();
             Type(By.Name("group_name"), group.Name);
             Type(By.Name("group_header"), group.Header);
             Type(By.Name("group_footer"), group.Footer);

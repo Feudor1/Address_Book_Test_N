@@ -19,8 +19,8 @@
             Oldgroups[0].Name = newData.Name;   
             Oldgroups.Sort();
             Newgroups.Sort();
-            //Assert.AreEqual(Oldgroups, Newgroups);
-            Assert.AreNotEqual(Oldgroups, Newgroups);
+            Assert.AreEqual(Oldgroups, Newgroups);
+            //Assert.AreNotEqual(Oldgroups, Newgroups);
         }
         
     }
