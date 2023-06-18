@@ -60,26 +60,32 @@ namespace Address_Book_Test_N
         }
 
 
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                int hash = 17;
-                hash = hash * 23 + (FirstName != null ? FirstName.GetHashCode() : 0);
-                hash = hash * 23 + (LastName != null ? LastName.GetHashCode() : 0);
-                return hash;
-            }
-        }
+        //public override int GetHashCode()
+        //{
+        //    unchecked
+        //    {
+        //        int hash = 17;
+        //        hash = hash * 23 + (FirstName != null ? FirstName.GetHashCode() : 0);
+        //        hash = hash * 23 + (LastName != null ? LastName.GetHashCode() : 0);
+        //        return hash;
+        //    }
+        //}
         //public override int GetHashCode()
         //{
 
         //    return FirstName.GetHashCode() + MiddleName.GetHashCode;
         //}
 
-        public override String ToString()
+        //public string ToString1()
+        //{
+        //    return "name = " + FirstName /*+ ", lastname = " + LastName*/;
+        //}
+
+        public override string ToString()
         {
-            return "name = " + FirstName + ", lastname = " + LastName;
+            return $"LastName = {LastName}, FirstName = {FirstName}";
         }
+
 
         public string FirstName
         {

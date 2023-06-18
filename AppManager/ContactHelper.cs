@@ -112,28 +112,28 @@ namespace Address_Book_Test_N
 
         public List<ContactsData> GetContactFirstNameList()
         {
- 
-            List<ContactsData> firstnameContact = new List <ContactsData>();
+            List<ContactsData> firstnameContact = new List<ContactsData>();
             manager.Navi.GoToHomePage();
             ICollection<IWebElement> firstnames = driver.FindElements(By.CssSelector("table td:nth-child(3)"));
             foreach (IWebElement firstname in firstnames)
             {
                 ContactsData contact = new ContactsData(firstname.Text);
-                firstnameContact.Add(new ContactsData(firstname.Text));
+                //contact.FirstName = firstname.Text;
+                firstnameContact.Add(contact);
             }
             return firstnameContact;
         }
 
         public List<ContactsData> GetContactLastNameList()
         {
-
             List<ContactsData> lastnameContact = new List<ContactsData>();
             manager.Navi.GoToHomePage();
             ICollection<IWebElement> lastNames = driver.FindElements(By.CssSelector("table td:nth-child(2)"));
             foreach (IWebElement lastname in lastNames)
             {
                 ContactsData contact = new ContactsData(lastname.Text);
-                lastnameContact.Add(new ContactsData(lastname.Text));
+               // contact.LastName = lastname.Text;
+                lastnameContact.Add(contact);
             }
             return lastnameContact;
         }
