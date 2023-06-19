@@ -38,6 +38,7 @@ namespace Address_Book_Test_N
             List<ContactsData> OldContact = applicationManager.ContactHP.GetContactList();
 
             applicationManager.ContactHP.AddANewContact(contact);
+            Assert.AreEqual(OldContact.Count +1, applicationManager.ContactHP.GetContactList().Count);
 
             List<ContactsData> NewContact = applicationManager.ContactHP.GetContactList();
             //List<ContactsData> NewName = applicationManager.ContactHP.GetContactFirstNameList();
@@ -85,13 +86,14 @@ namespace Address_Book_Test_N
             contact.Address2 = " ";
             contact.Home = " ";
             contact.Notes = " ";
-            //List<ContactsData> OldAccount = applicationManager.ContactHP.GetContactFirstNameList();
-            //applicationManager.ContactHP.AddANewContact(contact);
-            //List<ContactsData> NewAccount = applicationManager.ContactHP.GetContactFirstNameList();
-            //OldAccount.Add(contact);
-            //OldAccount.Sort();
-            //NewAccount.Sort();
-            //Assert.AreEqual(OldAccount, NewAccount);
+            List<ContactsData> OldContact = applicationManager.ContactHP.GetContactList();
+            applicationManager.ContactHP.AddANewContact(contact);
+            Assert.AreEqual(OldContact.Count + 1, applicationManager.ContactHP.GetContactList().Count);
+            List<ContactsData> NewContact = applicationManager.ContactHP.GetContactList();
+            OldContact.Add(contact);
+            OldContact.Sort();
+            NewContact.Sort();
+            Assert.AreEqual(OldContact, NewContact);
         }
     }
 }

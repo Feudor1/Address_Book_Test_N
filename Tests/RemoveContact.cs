@@ -10,11 +10,12 @@ namespace Address_Book_Test_N
             public void ContractRemover()
             {
             applicationManager.ContactHP.ContactListCheck();
-            List<ContactsData> OldAccount = applicationManager.ContactHP.GetContactList();
+            List<ContactsData> OldContact = applicationManager.ContactHP.GetContactList();
             applicationManager.ContactHP.RemoveContract(1);
-            List<ContactsData> NewAccount = applicationManager.ContactHP.GetContactList();
-            OldAccount.RemoveAt(0);
-            Assert.AreEqual(OldAccount, NewAccount);
+            Assert.AreEqual(OldContact.Count - 1, applicationManager.ContactHP.GetContactList().Count);
+            List<ContactsData> NewContact = applicationManager.ContactHP.GetContactList();
+            OldContact.RemoveAt(0);
+            Assert.AreEqual(OldContact, NewContact);
         }
         
     }

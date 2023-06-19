@@ -38,6 +38,7 @@ namespace Address_Book_Test_N
             List<GroupData> Oldgroups = applicationManager.GruopHP.GetGroupList();
 
             applicationManager.GruopHP.CreateGroup(group);
+            Assert.AreEqual(Oldgroups.Count + 1, applicationManager.GruopHP.GetGroupList().Count);
 
             List<GroupData> Newgroups = applicationManager.GruopHP.GetGroupList();
             Oldgroups.Add(group);
@@ -56,6 +57,8 @@ namespace Address_Book_Test_N
             List<GroupData> Oldgroups = applicationManager.GruopHP.GetGroupList();
 
             applicationManager.GruopHP.CreateGroup(group);
+
+            Assert.AreEqual(Oldgroups.Count, applicationManager.GruopHP.GetGroupList().Count);
 
             List<GroupData> Newgroups = applicationManager.GruopHP.GetGroupList();
             //Oldgroups.Add(group);

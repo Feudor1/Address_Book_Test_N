@@ -46,18 +46,9 @@ namespace Address_Book_Test_N
             return "name = " + name;
         }
 
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
+        public string Name { get; set; }
 
-        public string Header
-        {
-            get { return header; }
-            set { header = value; }
-        }
-
+        public string Header { get; set; }
         public string Footer
         {
             get { return footer; }

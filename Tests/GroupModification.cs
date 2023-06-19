@@ -14,7 +14,7 @@
             List<GroupData> Oldgroups = applicationManager.GruopHP.GetGroupList();
 
             applicationManager.GruopHP.Modify(newData);
-
+            Assert.AreEqual(Oldgroups.Count, applicationManager.GruopHP.GetGroupList().Count);
             List<GroupData> Newgroups = applicationManager.GruopHP.GetGroupList();
             Oldgroups[0].Name = newData.Name;   
             Oldgroups.Sort();
