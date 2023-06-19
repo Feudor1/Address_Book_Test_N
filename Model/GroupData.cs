@@ -9,7 +9,7 @@ namespace Address_Book_Test_N
 
         public GroupData(string name)
         {
-            this.name = name;
+            Name = name;
         }
 
 
@@ -46,14 +46,12 @@ namespace Address_Book_Test_N
             return "name = " + name;
         }
 
-        public string Name { get; set; }
+        public String Id { get; set; }
 
+        public string Name { get; set; }
         public string Header { get; set; }
-        public string Footer
-        {
-            get { return footer; }
-            set { footer = value; }
-        }
+        public string Footer { get; set; }
+
     }
 
 }

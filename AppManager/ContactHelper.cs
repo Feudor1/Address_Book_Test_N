@@ -146,6 +146,11 @@ namespace Address_Book_Test_N
                 {
                     ContactsData contact = new ContactsData(firstNames.ElementAt(i).Text, lastNames.ElementAt(i).Text);
                     contatCahe.Add(new ContactsData(firstNames.ElementAt(i).Text, lastNames.ElementAt(i).Text));
+
+                    //contatCahe.Add(new ContactsData(firstNames.ElementAt(i).Text, lastNames.ElementAt(i).Text)
+                    //{
+                    //    Id = firstNames.FindElement(By.CssSelector("input[type='checkbox']"))GetAttribute("id")
+                    //});
                 }
             }
             return new List<ContactsData>(contatCahe);
