@@ -1,3 +1,5 @@
+using System.Security.Cryptography;
+
 namespace Address_Book_Test_N
 {
     [TestFixture]
@@ -7,9 +9,8 @@ namespace Address_Book_Test_N
         [Test]
         public void CreateNewContact()
         {
-            ContactsData contact = new ContactsData("Ivanov");
-            contact.MiddleName = "Ivan";
-            contact.LastName = "Ivanovich";
+            ContactsData contact = new ContactsData("Ivan", "Ivanov");
+            contact.MiddleName = "Ivanovich";
             contact.NickName = "IvanovIvan";
             contact.Title = "Ivan";
             contact.Company = "Accesssoftec";
@@ -31,13 +32,37 @@ namespace Address_Book_Test_N
             contact.Address2 = "dsfasdfsadfsdf";
             contact.Home = "asdfsfd";
             contact.Notes = "asdfasfdfdasfdsa";
+
+            //List<ContactsData>OldName = applicationManager.ContactHP.GetContactFirstNameList();
+            //List<ContactsData> OldLastName = applicationManager.ContactHP.GetContactLastNameList();
+            List<ContactsData> OldContact = applicationManager.ContactHP.GetContactList();
+
             applicationManager.ContactHP.AddANewContact(contact);
+            Assert.AreEqual(OldContact.Count +1, applicationManager.ContactHP.GetContactList().Count);
+
+            List<ContactsData> NewContact = applicationManager.ContactHP.GetContactList();
+            //List<ContactsData> NewName = applicationManager.ContactHP.GetContactFirstNameList();
+            //List<ContactsData> NewLastName = applicationManager.ContactHP.GetContactLastNameList();
+
+            OldContact.Add(contact);
+            OldContact.Sort();
+            NewContact.Sort();
+            Assert.AreEqual(OldContact, NewContact);
+
+            //OldName.Add(contact);
+            //OldLastName.Add(contact);
+            //OldName.Sort();
+            //OldLastName.Sort();
+            //NewName.Sort();
+            //NewLastName.Sort();
+            //Assert.AreEqual(OldName, NewName);
+            //Assert.AreEqual(OldLastName, NewLastName);
         }
 
         [Test]
         public void CreateEmptywContact()
         {
-            ContactsData contact = new ContactsData("");
+            ContactsData contact = new ContactsData("", "");
             contact.MiddleName = "";
             contact.LastName = "";
             contact.NickName = "";
@@ -61,7 +86,14 @@ namespace Address_Book_Test_N
             contact.Address2 = " ";
             contact.Home = " ";
             contact.Notes = " ";
+            List<ContactsData> OldContact = applicationManager.ContactHP.GetContactList();
             applicationManager.ContactHP.AddANewContact(contact);
+            Assert.AreEqual(OldContact.Count + 1, applicationManager.ContactHP.GetContactList().Count);
+            List<ContactsData> NewContact = applicationManager.ContactHP.GetContactList();
+            OldContact.Add(contact);
+            OldContact.Sort();
+            NewContact.Sort();
+            Assert.AreEqual(OldContact, NewContact);
         }
     }
 }

@@ -1,6 +1,7 @@
-﻿namespace Address_Book_Test_N
+﻿using System.Collections.Generic;
+namespace Address_Book_Test_N
 {
-    public class GroupData
+    public class GroupData : IEquatable<GroupData>, IComparable<GroupData>
     {
         private string name;
         private string header = "";
@@ -8,26 +9,49 @@
 
         public GroupData(string name)
         {
-            this.name = name;
+            Name = name;
         }
 
-        public string Name
+
+        public int CompareTo(GroupData other)
         {
-            get { return name; }
-            set { name = value; }
+            if (object.ReferenceEquals(other, null))
+            {
+                return 1;
+            }
+
+            return Name.CompareTo(other.Name);
+        }
+        public bool Equals(GroupData other) 
+        {
+            if (object.ReferenceEquals(other, null))
+            {
+                return false ;
+            }
+
+            if (object.ReferenceEquals(this, other))
+            {
+                return true;
+            }
+            return Name == other.Name;
         }
 
-        public string Header
+        public override int GetHashCode() 
         {
-            get { return header; }
-            set { header = value; }
+            return name.GetHashCode();
         }
 
-        public string Footer
+        public override String ToString()
         {
-            get { return footer; }
-            set { footer = value; }
+            return "name = " + name;
         }
+
+        public String Id { get; set; }
+
+        public string Name { get; set; }
+        public string Header { get; set; }
+        public string Footer { get; set; }
+
     }
 
 }

@@ -1,9 +1,11 @@
-﻿namespace Address_Book_Test_N
+﻿using System.Xml.Linq;
+
+namespace Address_Book_Test_N
 {
-    public class ContactsData
+    public class ContactsData : IEquatable<ContactsData>, IComparable<ContactsData>
     {
 
-        private string firestName;
+        private string firstname;
         private string middleName = "";
         private string lastName = "";
         private string nickName = "";
@@ -28,133 +30,117 @@
         private string home = "";
         private string notes = "";
 
-        public ContactsData(string name)
+        public ContactsData (string name, string lastName)
         {
-            firestName = name;
-        }
-        public string FirstName
-        {
-            get { return firestName; }
-            set { firestName = value; }
+            FirstName = name;
+            LastName = lastName;
         }
 
-        public string MiddleName
+        public int CompareTo(ContactsData other)
         {
-            get { return middleName; }
-            set { middleName = value; }
+            if (object.ReferenceEquals(other, null))
+            {
+                return 1;
+            }
+
+            if (LastName == other.LastName)
+            {
+                return FirstName.CompareTo(other.FirstName);
+            }
+
+            return LastName.CompareTo(other.LastName);
         }
 
-        public string LastName
+        public bool Equals(ContactsData other)
         {
-            get { return lastName; }
-            set { lastName = value; }
-        }
-        public string NickName
-        {
-            get { return nickName; }
-            set { nickName = value; }
-        }
-        public string Title
-        {
-            get { return title; }
-            set { title = value; }
-        }
-        public string Company
-        {
-            get { return company; }
-            set { company = value; }
-        }
-        public string Adress
-        {
-            get { return adress; }
-            set { adress = value; }
-        }
-        public string HomeTelephone
-        {
-            get { return homeTelephone; }
-            set { homeTelephone = value; }
-        }
-        public string MobileTelephone
-        {
-            get { return mobileTelephone; }
-            set { mobileTelephone = value; }
-        }
-        public string WorkTelephone
-        {
-            get { return workTelephone; }
-            set { workTelephone = value; }
-        }
-        public string Fax
-        {
-            get { return fax; }
-            set { fax = value; }
-        }
-        public string Email
-        {
-            get { return email; }
-            set { email = value; }
-        }
-        public string Email2
-        {
-            get { return email2; }
-            set { email2 = value; }
-        }
-        public string Email3
-        {
-            get { return email3; }
-            set { email3 = value; }
-        }
-        public string Homepage
-        {
-            get { return homepage; }
-            set { homepage = value; }
-        }
-        public string Birthaday
-        {
-            get { return birthaday; }
-            set { birthaday = value; }
-        }
-        public string Birthmonth
-        {
-            get { return birthmonth; }
-            set { birthmonth = value; }
-        }
-        public string Birthyear
-        {
-            get { return birthyear; }
-            set { birthyear = value; }
+            if (object.ReferenceEquals(other, null) || GetType() != other.GetType())
+            {
+                return false;
+            }
+
+            if (object.ReferenceEquals(this, other))
+            {
+                return true;
+            }
+            return FirstName == other.FirstName && LastName == other.LastName;
         }
 
-        public string Annivday
+
+        public override int GetHashCode()
         {
-            get { return annivday; }
-            set { annivday = value; }
+            unchecked
+            {
+                int hash = 17;
+                hash = hash * 23 + (FirstName != null ? FirstName.GetHashCode() : 0);
+                hash = hash * 23 + (LastName != null ? LastName.GetHashCode() : 0);
+                return hash;
+            }
         }
-        public string Annivmonth
+        //public override int GetHashCode()
+        //{
+
+        //    return FirstName.GetHashCode() + MiddleName.GetHashCode;
+        //}
+
+        //public string ToString1()
+        //{
+        //    return "name = " + FirstName /*+ ", lastname = " + LastName*/;
+        //}
+
+        public override string ToString()
         {
-            get { return annivmonth; }
-            set { annivmonth = value; }
+            return $"LastName = {LastName}, FirstName = {FirstName}";
         }
-        public string Annivyear
-        {
-            get { return annivyear; }
-            set { annivyear = value; }
-        }
-        public string Address2
-        {
-            get { return address2; }
-            set { address2 = value; }
-        }
-        public string Notes
-        {
-            get { return notes; }
-            set { notes = value; }
-        }
-        public string Home
-        {
-            get { return home; }
-            set { home = value; }
-        }
+
+        public String Id { get; set; }
+
+        public string FirstName { get; set; }
+
+        public string MiddleName { get; set; }
+
+        public string LastName { get; set; }
+
+        public string NickName { get; set; }
+
+        public string Title { get; set; }
+
+        public string Company { get; set; }
+
+        public string Adress { get; set; }
+        
+        public string HomeTelephone { get; set; }
+
+        public string MobileTelephone { get; set; }
+  
+        public string WorkTelephone { get; set; }
+
+        public string Fax { get; set; }
+
+        public string Email { get; set; }
+
+        public string Email2 { get; set; }
+
+        public string Email3 { get; set; }
+ 
+        public string Homepage { get; set; }
+
+        public string Birthaday { get; set; }
+
+        public string Birthmonth { get; set; }
+
+        public string Birthyear { get; set; }
+
+        public string Annivday { get; set; }
+
+        public string Annivmonth { get; set; }
+
+        public string Annivyear { get; set; }
+
+        public string Address2 { get; set; }
+
+        public string Notes { get; set; }
+
+        public string Home { get; set; }
 
     }
 

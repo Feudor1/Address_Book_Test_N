@@ -1,7 +1,10 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Framework.Internal.Execution;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Internal;
 using OpenQA.Selenium.Support.UI;
 using System;
+using System.Reflection;
+using System.Xml.Linq;
 
 namespace Address_Book_Test_N
 {
@@ -32,12 +35,31 @@ namespace Address_Book_Test_N
             manager.Navi.GoToHomePage();
             FindEditButton();
             FillTheContactData(newDAta);
-            FindUpdateGroupButton();
+            FindUpdateContactButton();
             manager.Navi.GoToHomePage();
             return this;
         }
         public ContactHelper FillTheContactData(ContactsData contact)
         {
+            driver.FindElement(By.Name("firstname")).Clear();
+            driver.FindElement(By.Name("middlename")).Clear();
+            driver.FindElement(By.Name("lastname")).Clear();
+            driver.FindElement(By.Name("nickname")).Clear();
+            driver.FindElement(By.Name("title")).Clear();
+            driver.FindElement(By.Name("company")).Clear();
+            driver.FindElement(By.Name("address")).Clear();
+            driver.FindElement(By.Name("home")).Clear();
+            driver.FindElement(By.Name("mobile")).Clear();
+            driver.FindElement(By.Name("work")).Clear();
+            driver.FindElement(By.Name("fax")).Clear();
+            driver.FindElement(By.Name("email")).Clear();
+            driver.FindElement(By.Name("email3")).Clear();
+            driver.FindElement(By.Name("homepage")).Clear();
+            driver.FindElement(By.Name("byear")).Clear();
+            driver.FindElement(By.Name("ayear")).Clear();
+            driver.FindElement(By.Name("address2")).Clear();
+            driver.FindElement(By.Name("phone2")).Clear();
+            driver.FindElement(By.Name("notes")).Clear();
             Type(By.Name("firstname"), contact.FirstName);
             Type(By.Name("middlename"), contact.MiddleName);
             Type(By.Name("lastname"), contact.LastName);
@@ -63,6 +85,7 @@ namespace Address_Book_Test_N
             new SelectElement(driver.FindElement(By.Name("aday"))).SelectByText(contact.Annivday);
             new SelectElement(driver.FindElement(By.Name("amonth"))).SelectByText(contact.Annivmonth);
             driver.FindElement(By.XPath("//div[@id='content']/form/input[21]")).Click();
+            contatCahe = null;
             return this;
         }
 
@@ -84,6 +107,7 @@ namespace Address_Book_Test_N
                 Type(By.Name("lastname"), "Если контактов нет");
                 //Вот эта дичь для поиска кнопки Enter
                 driver.FindElement(By.XPath("//div[@id='content']/form/input[21]")).Click();
+                contatCahe = null;
                 manager.Navi.GoToGroupPage();
             }
 
@@ -94,7 +118,7 @@ namespace Address_Book_Test_N
             driver.FindElement(By.XPath("//img[@alt='Edit']")).Click();
             return this;
         }
-        public ContactHelper FindUpdateGroupButton()
+        public ContactHelper FindUpdateContactButton()
         {
             driver.FindElement(By.Name("update")).Click();
             return this;
@@ -104,8 +128,76 @@ namespace Address_Book_Test_N
         {
             driver.FindElement(By.XPath("//input[@value='Delete']")).Click();
             driver.SwitchTo().Alert().Accept();
+            contatCahe = null;
             return this;
         }
 
+
+        private List<ContactsData> contatCahe = null;
+        public List<ContactsData> GetContactList()
+        {
+            if (contatCahe == null)
+            {
+                contatCahe = new List<ContactsData>();
+                manager.Navi.GoToHomePage();
+                ICollection<IWebElement> firstNames = driver.FindElements(By.CssSelector("table td:nth-child(3)"));
+                ICollection<IWebElement> lastNames = driver.FindElements(By.CssSelector("table td:nth-child(2)"));
+                for (int i = 0; i < firstNames.Count && i < lastNames.Count; i++)
+                {
+                    ContactsData contact = new ContactsData(firstNames.ElementAt(i).Text, lastNames.ElementAt(i).Text);
+                    contatCahe.Add(new ContactsData(firstNames.ElementAt(i).Text, lastNames.ElementAt(i).Text));
+
+                    //contatCahe.Add(new ContactsData(firstNames.ElementAt(i).Text, lastNames.ElementAt(i).Text)
+                    //{
+                    //    Id = firstNames.FindElement(By.CssSelector("input[type='checkbox']"))GetAttribute("id")
+                    //});
+                }
+            }
+            return new List<ContactsData>(contatCahe);
+
+            //        List<ContactsData> contacts = new List<ContactsData>();
+            //    manager.Navi.GoToHomePage();
+            //    ICollection<IWebElement> firstNames = driver.FindElements(By.CssSelector("table td:nth-child(3)"));
+            //    ICollection<IWebElement> lastNames = driver.FindElements(By.CssSelector("table td:nth-child(2)"));
+
+            //    for (int i = 0; i < firstNames.Count && i < lastNames.Count; i++)
+            //    {
+            //        ContactsData contact = new ContactsData(firstNames.ElementAt(i).Text, lastNames.ElementAt(i).Text);
+            //        contacts.Add(contact);
+            //    }
+
+            //    return contacts;
+            //}
+
+
+
+            //public List<ContactsData> GetContactFirstNameList()
+            //{
+            //    List<ContactsData> firstnameContact = new List<ContactsData>();
+            //    manager.Navi.GoToHomePage();
+            //    ICollection<IWebElement> firstnames = driver.FindElements(By.CssSelector("table td:nth-child(3)"));
+            //    foreach (IWebElement firstname in firstnames)
+            //    {
+            //        ContactsData contact = new ContactsData(firstname.Text);
+            //        //contact.FirstName = firstname.Text;
+            //        firstnameContact.Add(contact);
+            //    }
+            //    return firstnameContact;
+            //}
+
+            //public List<ContactsData> GetContactLastNameList()
+            //{
+            //    List<ContactsData> lastnameContact = new List<ContactsData>();
+            //    manager.Navi.GoToHomePage();
+            //    ICollection<IWebElement> lastNames = driver.FindElements(By.CssSelector("table td:nth-child(2)"));
+            //    foreach (IWebElement lastname in lastNames)
+            //    {
+            //        ContactsData contact = new ContactsData(lastname.Text);
+            //       // contact.LastName = lastname.Text;
+            //        lastnameContact.Add(contact);
+            //    }
+            //    return lastnameContact;
+            //}
+        }
     }
 }
